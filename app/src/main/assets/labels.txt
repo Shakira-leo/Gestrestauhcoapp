@@ -1,0 +1,6 @@
+0 AjiGallina
+1 ArrozPollo
+2 Chaufa
+3 Lomo
+4 PolloBrasa
+5 Patasca

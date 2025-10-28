@@ -21,6 +21,8 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_control -> replaceFragment(ControlFragment())
                 R.id.nav_estadistica -> replaceFragment(EstadisticaFragment())
                 R.id.nav_configuracion -> replaceFragment(ConfiguracionFragment())
+                R.id.nav_detector -> replaceFragment(DetectorFragment())
+//                R.id.nav_detector -> replaceFragment(DetectorFragment())
             }
             true
         }
