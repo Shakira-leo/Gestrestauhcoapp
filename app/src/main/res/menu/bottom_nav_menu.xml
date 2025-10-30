@@ -8,13 +8,13 @@
         android:id="@+id/nav_estadistica"
         android:icon="@drawable/ic_estadistica"
         android:title="Estadística" />
-
+    <item
+        android:id="@+id/nav_detector"
+        android:icon="@drawable/ic_detector"
+        android:title="Detector" />
     <item
         android:id="@+id/nav_configuracion"
         android:icon="@drawable/ic_configuracion"
         android:title="Configuración" />
-    <item
-        android:id="@+id/nav_detector"
-        android:icon="@drawable/ic_configuracion"
-        android:title="Detector" />
+
 </menu>

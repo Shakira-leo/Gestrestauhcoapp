@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_principal">
 
+    <!-- Texto de bienvenida -->
     <TextView
-        android:text="Bienvenido a SmartAgroNutriApp"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/txtBienvenida"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Bienvenido\na \nGestrestauHco"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
-    <Button
-        android:id="@+id/btnIniciar"
-        android:layout_width="200dp"
-        android:layout_height="89dp"
-        android:text="Iniciar" />
-</LinearLayout>
+    <!-- Contenedor del botón -->
+    <FrameLayout
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp">
+
+        <!-- Botón principal -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIniciar"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Iniciar"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/selector_btn_rojo"
+            app:backgroundTint="@null"
+            android:gravity="center" />
+
+        <!-- Ícono de flecha -->
+        <ImageView
+            android:id="@+id/iconFlecha"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/flecha_inicio"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+</RelativeLayout>
