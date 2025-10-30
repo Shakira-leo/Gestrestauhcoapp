@@ -40,7 +40,7 @@ class ConfiguracionFragment : Fragment() {
         val nombre = sharedPref?.getString("nombre_usuario", "Usuario") ?: "Usuario"
         val email = sharedPref?.getString("email_usuario", "Correo no disponible") ?: "Correo no disponible"
 
-        tvWelcome.text = "BIENVENIDO, $nombre"
+        tvWelcome.text = " $nombre"
         tvEmail.text = "Correo: $email"
     }
 
