@@ -1,13 +1,13 @@
 package com.example.gestrestauhco
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.gestrestauhco.databinding.FragmentDetectorBinding
 import com.example.gestrestauhco.ml.Model
 import org.tensorflow.lite.DataType
@@ -22,30 +22,36 @@ class DetectorFragment : Fragment() {
     private lateinit var binding: FragmentDetectorBinding
     private lateinit var labels: List<String>
 
+    // launcher para abrir la cámara
+    private val takePicture = registerForActivityResult(
+        ActivityResultContracts.TakePicturePreview()
+    ) { bitmap ->
+        if (bitmap != null) {
+            procesarImagen(bitmap)
+        } else {
+            Toast.makeText(requireContext(), "No se capturó ninguna imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetectorBinding.inflate(inflater, container, false)
 
-        //  Cargar labels desde el archivo
+        // Cargar las etiquetas del modelo
         labels = loadLabels("labels.txt")
 
+        // Botón para abrir la cámara
         binding.btnEscanear.setOnClickListener {
-            try {
-                escanearPlato()
-            } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_LONG).show()
-            }
+            takePicture.launch(null)
         }
 
         return binding.root
     }
 
-    private fun escanearPlato() {
-        //  imagen desde drawable puedes reemplazar prueba xd
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sample_plate1)
-
+    // Procesar imagen capturada por la cámara
+    private fun procesarImagen(bitmap: Bitmap) {
         val resized = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
         val byteBuffer = convertBitmapToByteBuffer(resized)
 
@@ -65,16 +71,18 @@ class DetectorFragment : Fragment() {
 
             if (index in labels.indices) {
                 val nombrePlato = labels[index]
-                binding.txtResultado.text = " Plato detectado: $nombrePlato"
+                binding.txtResultado.text = "🍽️ Plato detectado: $nombrePlato"
+                binding.imgPreview.setImageBitmap(bitmap)
             } else {
-                binding.txtResultado.text = "No se reconoció ningún plato"
+                binding.txtResultado.text = "❌ No se reconoció ningún plato"
             }
 
         } catch (e: Exception) {
-            binding.txtResultado.text = "❌ Modelo no cargado: ${e.message}"
+            binding.txtResultado.text = "Error procesando: ${e.message}"
         }
     }
 
+    // Convierte Bitmap a ByteBuffer para el modelo
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
         val byteBuffer = ByteBuffer.allocateDirect(4 * 224 * 224 * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
@@ -93,7 +101,7 @@ class DetectorFragment : Fragment() {
         return byteBuffer
     }
 
-    // Leer las etiquetas del archivo labels.txt en ml
+    // Cargar las etiquetas desde assets/labels.txt
     private fun loadLabels(fileName: String): List<String> {
         val labelList = mutableListOf<String>()
         try {

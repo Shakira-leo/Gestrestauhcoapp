@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/btnIniciar"
-        android:text="Iniciar"
         android:layout_width="200dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="89dp"
+        android:text="Iniciar" />
 </LinearLayout>

@@ -2,29 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="20dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presiona el botón para escanear"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center" />
 
     <ImageView
         android:id="@+id/imgPreview"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/sample_plate1"
+        android:layout_marginBottom="20dp"
+        android:scaleType="centerCrop"
+        android:background="#EEEEEE"
         android:contentDescription="Vista previa del plato" />
 
     <Button
         android:id="@+id/btnEscanear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Escanear"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esperando detección..."
-        android:textSize="18sp"
-        android:layout_marginTop="16dp" />
+        android:text="📸 Escanear con cámara" />
 </LinearLayout>
