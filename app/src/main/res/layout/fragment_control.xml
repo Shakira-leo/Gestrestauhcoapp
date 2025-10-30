@@ -2,63 +2,119 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
-
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:text="BIENVENIDO"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
+        android:orientation="vertical">
 
+        <!-- Encabezado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="179dp"
+            android:background="@drawable/bg_encabezado"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-            android:id="@+id/tvDeteccion"
-            android:layout_width="wrap_content"
+            <!-- Textos a la izquierda -->
+            <LinearLayout
+                android:layout_width="209dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="BIENVENIDO,"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tvSubtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Sistema principal\nde datos"
+                    android:textColor="#FFEAEA"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Imagen a la derecha -->
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="150dp"
+                android:layout_height="166dp"
+                android:layout_marginStart="-10dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/logo_bienvenida" />
+        </LinearLayout>
+
+        <!-- Sección de datos -->
+        <LinearLayout
+            android:id="@+id/layoutDatos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detección: --"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            android:orientation="vertical"
+            android:gravity="start"
+            android:layout_margin="24dp">
 
-        <TextView
-            android:id="@+id/tvEstado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estado: --"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvDeteccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detección: --"
+                android:textColor="#D50000"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif" />
 
-        <TextView
-            android:id="@+id/tvTemperatura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Temperatura: -- °C"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado: --"
+                android:textColor="#D50000"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif" />
 
-        <TextView
-            android:id="@+id/tvHumedad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Humedad: -- %"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvTemperatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura: -- °C"
+                android:textColor="#D50000"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif" />
 
-        <TextView
-            android:id="@+id/tvFecha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha: --"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvHumedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humedad: -- %"
+                android:textColor="#D50000"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:id="@+id/tvFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha: --"
+                android:textColor="#D50000"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_principal">
 
-    <!-- Texto de bienvenida -->
     <TextView
         android:id="@+id/txtBienvenida"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
 
-    <!-- Contenedor del botón -->
     <FrameLayout
         android:layout_width="380dp"
         android:layout_height="70dp"
@@ -41,7 +39,7 @@
             app:backgroundTint="@null"
             android:gravity="center" />
 
-        <!-- Ícono de flecha -->
+
         <ImageView
             android:id="@+id/iconFlecha"
             android:layout_width="30dp"
