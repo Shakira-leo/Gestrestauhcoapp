@@ -10,10 +10,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import okhttp3.*
 import org.json.JSONObject
@@ -23,6 +22,8 @@ class EstadisticaFragment : Fragment() {
 
     private lateinit var tvWelcome: TextView
     private lateinit var barChart: BarChart
+    private lateinit var pieChart: PieChart
+
     private val client = OkHttpClient()
     private val handler = Handler(Looper.getMainLooper())
     private val updateInterval: Long = 3000L
@@ -40,6 +41,7 @@ class EstadisticaFragment : Fragment() {
 
         tvWelcome = view.findViewById(R.id.tvWelcomeEstadistica)
         barChart = view.findViewById(R.id.barChart)
+        pieChart = view.findViewById(R.id.pieChart)
 
         mostrarBienvenida()
         iniciarActualizacionAutomatica()
@@ -52,7 +54,6 @@ class EstadisticaFragment : Fragment() {
         val nombre = sharedPref?.getString("nombre_usuario", "Usuario") ?: "Usuario"
         tvWelcome.text = "BIENVENIDO, $nombre"
     }
-
 
     private fun iniciarActualizacionAutomatica() {
         handler.post(object : Runnable {
@@ -79,20 +80,18 @@ class EstadisticaFragment : Fragment() {
 
                 try {
                     val json = JSONObject(body)
-
                     val temperatura = json.optDouble("temperatura", 0.0).toFloat()
                     val humedad = json.optDouble("humedad", 0.0).toFloat()
-
 
                     if (temperatura != ultimaTemperatura || humedad != ultimaHumedad) {
                         ultimaTemperatura = temperatura
                         ultimaHumedad = humedad
 
                         activity?.runOnUiThread {
-                            mostrarGrafico(temperatura, humedad)
+                            mostrarGraficoBarras(temperatura, humedad)
+                            mostrarGraficoPastel(temperatura, humedad)
                         }
                     }
-
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -100,7 +99,7 @@ class EstadisticaFragment : Fragment() {
         })
     }
 
-    private fun mostrarGrafico(temp: Float, hum: Float) {
+    private fun mostrarGraficoBarras(temp: Float, hum: Float) {
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(0f, temp))
         entries.add(BarEntry(1f, hum))
@@ -117,9 +116,9 @@ class EstadisticaFragment : Fragment() {
 
         barChart.data = data
         barChart.setFitBars(true)
-        barChart.animateY(0)
+        barChart.animateY(1000)
         barChart.description = Description().apply {
-            text = "Temperatura y Humedad actuales"
+            text = "Humedad "
         }
 
         val xAxis = barChart.xAxis
@@ -130,6 +129,29 @@ class EstadisticaFragment : Fragment() {
 
         barChart.axisRight.isEnabled = false
         barChart.invalidate()
+    }
+
+    private fun mostrarGraficoPastel(temp: Float, hum: Float) {
+        val entries = ArrayList<PieEntry>()
+        entries.add(PieEntry(temp, "Temperatura"))
+        entries.add(PieEntry(hum, "Humedad"))
+
+        val dataSet = PieDataSet(entries, " actual")
+        dataSet.colors = listOf(
+            resources.getColor(android.R.color.holo_red_light, null),
+            resources.getColor(android.R.color.holo_blue_light, null)
+        )
+        dataSet.valueTextSize = 14f
+
+        val data = PieData(dataSet)
+        pieChart.data = data
+        pieChart.centerText = "Sensores"
+        pieChart.setEntryLabelTextSize(14f)
+        pieChart.animateY(1000)
+        pieChart.description = Description().apply {
+            text = "Comparación Temperatura vs Humedad"
+        }
+        pieChart.invalidate()
     }
 
     override fun onDestroyView() {
