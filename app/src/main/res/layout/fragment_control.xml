@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -55,64 +56,204 @@
                 android:src="@drawable/logo_bienvenida" />
         </LinearLayout>
 
-        <LinearLayout
+        <GridLayout
             android:id="@+id/layoutDatos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="start"
-            android:layout_margin="24dp">
+            android:layout_height="550dp"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp">
 
-            <TextView
-                android:id="@+id/tvDeteccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detección: --"
-                android:textColor="#D50000"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif" />
+            <!-- Tarjeta Detección -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_white"
+                android:elevation="6dp">
 
-            <TextView
-                android:id="@+id/tvEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Estado: --"
-                android:textColor="#D50000"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_deteccion"
+                    app:tint="#D50000"
+                    android:layout_marginBottom="8dp" />
 
-            <TextView
-                android:id="@+id/tvTemperatura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Temperatura: -- °C"
-                android:textColor="#D50000"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detección:"
+                    android:textColor="#D50000"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
 
-            <TextView
-                android:id="@+id/tvHumedad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Humedad: -- %"
-                android:textColor="#D50000"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif" />
+                <TextView
+                    android:id="@+id/tvDeteccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fecha: --"
-                android:textColor="#D50000"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif" />
-        </LinearLayout>
+            <!-- Tarjeta Estado -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_white"
+                android:elevation="6dp">
 
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_estado"
+                    app:tint="#D50000"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado:"
+                    android:textColor="#D50000"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvEstado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
+
+            <!-- Tarjeta Temperatura -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_white"
+                android:elevation="6dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_temperatura"
+                    app:tint="#D50000"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura:"
+                    android:textColor="#D50000"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvTemperatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-- °C"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
+
+            <!-- Tarjeta Humedad -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_white"
+                android:elevation="6dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_humedad"
+                    app:tint="#D50000"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humedad:"
+                    android:textColor="#D50000"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvHumedad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-- %"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
+
+            <!-- Tarjeta Fecha (Rectangular, alineada perfectamente con las otras) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="149dp"
+                android:layout_columnSpan="2"
+                android:layout_columnWeight="2"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="@drawable/bg_card_white"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_fecha"
+                    app:tint="#D50000"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha:"
+                    android:textColor="#D50000"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif" />
+            </LinearLayout>
+        </GridLayout>
     </LinearLayout>
 </ScrollView>

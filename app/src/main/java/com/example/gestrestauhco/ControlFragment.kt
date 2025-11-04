@@ -103,11 +103,11 @@ class ControlFragment : Fragment() {
                     }
 
                     activity?.runOnUiThread {
-                        tvDeteccion.text = "Detección: $deteccion"
-                        tvEstado.text = "Estado: $estado"
-                        tvTemperatura.text = "Temperatura: $temperatura °C"
-                        tvHumedad.text = "Humedad: $humedad %"
-                        tvFecha.text = "Fecha: $fechaFormateada"
+                        tvDeteccion.text = "$deteccion"
+                        tvEstado.text = "$estado"
+                        tvTemperatura.text = "$temperatura °C"
+                        tvHumedad.text = "$humedad %"
+                        tvFecha.text = "$fechaFormateada"
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
