@@ -1,34 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layoutPrincipal"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center"
-    android:background="@color/white">
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Presiona el botón para escanear"
-        android:textSize="18sp"
-        android:layout_marginBottom="20dp"
-        android:textAlignment="center" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imgPreview"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="20dp"
-        android:scaleType="centerCrop"
-        android:background="#EEEEEE"
-        android:contentDescription="Vista previa del plato" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="179dp"
+            android:background="@drawable/bg_encabezado"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnEscanear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="📸 Escanear con cámara" />
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="BIENVENIDO,"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tvSubtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Sistema principal\nde datos"
+                    android:textColor="#FFEAEA"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="150dp"
+                android:layout_height="166dp"
+                android:layout_marginStart="-10dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/logo_bienvenida" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/imgIconoCamara"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/escanear"
+                android:scaleType="centerCrop"
+                android:contentDescription="Imagen temporal" />
+            <ImageView
+                android:id="@+id/imgPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Vista previa del plato" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/txtResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Presiona el botón para escanear"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#333333"
+            android:padding="12dp"
+            android:background="@drawable/cuadro_prediccion"
+            android:elevation="4dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEscanear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Escanear"
+            android:textColor="@android:color/white"
+            android:drawableStart="@drawable/ic_camara"
+            android:drawableTint="@android:color/white"
+            android:drawablePadding="8dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/bg_escanear"
+            android:gravity="center_vertical" />
+
+
+    </LinearLayout>
+</ScrollView>

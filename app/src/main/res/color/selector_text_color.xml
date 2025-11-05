@@ -3,5 +3,5 @@
     <!-- Texto seleccionado -->
     <item android:color="#D50000" android:state_checked="true" /> <!-- Negro -->
     <!-- Texto no seleccionado -->
-    <item android:color="#757575" android:state_checked="false" /> <!-- Gris -->
+    <item android:color="#FFFFFF" android:state_checked="false" /> <!-- Gris -->
 </selector>

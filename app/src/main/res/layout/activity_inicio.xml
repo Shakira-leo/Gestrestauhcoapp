@@ -9,7 +9,7 @@
         android:id="@+id/txtBienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido\na \nGestrestauHco"
+        android:text="Bienvenido\na\nGestrestauHco"
         android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
@@ -38,8 +38,6 @@
             android:background="@drawable/selector_btn_rojo"
             app:backgroundTint="@null"
             android:gravity="center" />
-
-
         <ImageView
             android:id="@+id/iconFlecha"
             android:layout_width="30dp"

@@ -1,16 +1,13 @@
-0 Lomo Saltado
-1 Aji de Gallina
-2 Tamales
-3 Anticuchos
-4 Ceviche
-5 Pan con Chicharron
-6 Papa ala Huancaina
-7 Pollo ala Brasa
-8 Tallarines Verdes
-9 Causa Limeña
-10 Picarones
-11 Turron Doña Pepa
-12 Torta Volteada
-13 Mazamorra Morada
-14 Torta de Chocolate
-15 Alfajor
+alfajor
+anticuchos
+arroz_con_leche
+broaster
+ceviche
+chaufa
+chicha_de_jora
+chicha_morada
+crema_volteada
+juane
+papa_ala_huancaina
+salchipapa
+tallarin_verde
